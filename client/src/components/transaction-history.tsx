@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,11 +11,16 @@ interface TransactionHistoryProps {
 }
 
 export default function TransactionHistory({ walletId }: TransactionHistoryProps) {
-  const { data: transactionsData, isLoading } = useQuery({
+  type TransactionsResponse = { transactions: Transaction[] };
+
+  const { data: transactionsData, isLoading } = useQuery<TransactionsResponse>({
     queryKey: [`/api/wallets/${walletId}/transactions`],
   });
 
   const transactions = transactionsData?.transactions || [];
+
+  // State to toggle showing all transactions or just first 5
+  const [showAll, setShowAll] = useState(false);
 
   const getTransactionIcon = (type: string) => {
     switch (type) {
@@ -73,6 +79,9 @@ export default function TransactionHistory({ walletId }: TransactionHistoryProps
     }
   };
 
+  // Decide which transactions to show based on showAll state
+  const displayedTransactions = showAll ? transactions : transactions.slice(0, 5);
+
   return (
     <Card className="bg-white border border-gray-200 shadow-sm">
       <CardHeader>
@@ -112,7 +121,7 @@ export default function TransactionHistory({ walletId }: TransactionHistoryProps
         ) : (
           <>
             <div className="space-y-3">
-              {transactions.slice(0, 5).map((transaction) => (
+              {displayedTransactions.map((transaction) => (
                 <div
                   key={transaction._id}
                   className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-slate-50 transition-colors"
@@ -154,8 +163,9 @@ export default function TransactionHistory({ walletId }: TransactionHistoryProps
                 <Button
                   variant="ghost"
                   className="w-full text-primary hover:text-blue-700 font-medium text-sm py-2 transition-colors duration-200"
+                  onClick={() => setShowAll(!showAll)}
                 >
-                  View All Transactions
+                  {showAll ? "Show Less" : "View All Transactions"}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>

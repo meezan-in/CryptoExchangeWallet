@@ -72,11 +72,7 @@ export default function Dashboard() {
       <TechStackPanel />
 
       {/* Top Right Project Badge */}
-      <div className="fixed top-20 right-6 z-10">
-        <div className="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">
-          6th Sem RVCE Project
-        </div>
-      </div>
+    
 
       {/* Main Dashboard Content */}
       <main className="max-w-7xl mx-auto px-6 py-8">
