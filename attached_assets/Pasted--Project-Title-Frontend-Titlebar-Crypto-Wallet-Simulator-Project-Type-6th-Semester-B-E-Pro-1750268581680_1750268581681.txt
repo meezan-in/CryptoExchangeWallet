@@ -1,0 +1,186 @@
+🎯 Project Title (Frontend Titlebar): Crypto Wallet Simulator
+📘 Project Type: 6th Semester B.E. Project (Computer Science)
+🎨 Theme: Full Light Mode Only, no dark theme
+
+🧠 Project Overview:
+Create a React + Node.js based project simulating a cryptocurrency wallet and exchange platform (in INR), including cryptography, secure wallet management, and live data from CoinGecko.
+
+This is NOT a blockchain implementation — no blockchain or on-chain interactions should be mentioned or simulated unless actually implemented.
+
+The application should:
+
+Use MongoDB Atlas for persistent cloud-based data.
+
+Be fully runnable in VS Code (no Replit local DB).
+
+No login/auth — just wallet-level security via password.
+
+Full white/light UI, minimalist and clean layout.
+
+Real-time cryptocurrency prices from CoinGecko.
+
+Fully working trading simulation between INR and crypto assets.
+
+Allow multiple wallet creation and selection.
+
+Use and showcase cryptography subtly, with methods used.
+
+🖼️ User Interface Requirements:
+🏠 Landing Page UI:
+Two central buttons:
+
+Create New Wallet
+
+Login with Existing Wallet
+
+Clean white background, modern font, no dark colors.
+
+💼 Wallet Creation Flow:
+Ask for:
+
+Wallet Name
+
+Wallet Password
+
+Generate and show mnemonic phrase (BIP39).
+
+Store encrypted wallet data using AES-256.
+
+🔑 Wallet Login Flow:
+Ask for:
+
+Wallet Name
+
+Wallet Password
+
+Decrypt wallet using password and load wallet details.
+
+💹 Dashboard (Main UI After Wallet Access):
+Top Center: Crypto Wallet Simulator (project title).
+
+Bottom Center: 6th Semester Project - RVCE CSE
+
+Right Side (extreme corner): Tech Stack & Security Used (small panel or floating box):
+
+Node.js, React.js, MongoDB Atlas
+
+BIP39 (mnemonics)
+
+AES-256 encryption
+
+SHA-256 hashing
+
+CoinGecko API
+
+Display INR balance and crypto holdings (BTC, ETH, LTC, DOGE, MATIC, BNB, SOL).
+
+Live prices of all listed cryptocurrencies (auto-refresh every 1 second).
+
+Buttons for:
+
+Add INR
+
+Remove INR
+
+Trade INR ↔ Crypto
+
+Animated transitions when trade occurs (Framer Motion or CSS).
+
+Display Transaction History prominently at the bottom/middle of the dashboard.
+
+🛡️ Cryptographic Features to Demonstrate:
+Mnemonic (BIP39) for wallet creation.
+
+AES-256 for encrypting wallet data using password-derived key.
+
+SHA-256 hash for all transactions.
+
+Use crypto module in Node.js (crypto.createCipheriv, etc.)
+
+Show subtle UI info (e.g. info tooltips, "🔒 Secured") — do not make it look like a lesson.
+
+🔌 Data & API Integration:
+Use CoinGecko (no API key required):
+
+http
+Copy
+Edit
+GET https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,litecoin,polygon,solana,dogecoin,binancecoin&vs_currencies=inr
+Refresh data every 1 second.
+
+Show real-time conversion on trading form.
+
+🧾 MongoDB Atlas Setup:
+Connection:
+mongodb+srv://happyuser:tomato12@cluster0.sx3hjrz.mongodb.net/
+
+Collections:
+wallets:
+
+json
+Copy
+Edit
+{
+  "_id": "ObjectId",
+  "name": "MyWallet",
+  "passwordHash": "hashed_pass",
+  "mnemonicEncrypted": "AES-256 encrypted",
+  "balanceINR": 10000,
+  "holdings": {
+    "BTC": 0.002,
+    "ETH": 0.05,
+    "DOGE": 100
+  }
+}
+transactions:
+
+json
+Copy
+Edit
+{
+  "_id": "ObjectId",
+  "walletId": "wallet ObjectId",
+  "type": "add" | "remove" | "trade",
+  "amountINR": 1000,
+  "crypto": {
+    "symbol": "BTC",
+    "amount": 0.0005
+  },
+  "timestamp": "ISO Date",
+  "txnHash": "SHA256 hash"
+}
+⚙️ Functionality Summary:
+🔁 Create and manage multiple wallets.
+
+🔐 Wallets secured via password (used for AES key derivation).
+
+🔄 Real-time crypto rate updates.
+
+📈 INR ↔ Crypto trading with animations.
+
+📜 Complete transaction history shown for each wallet.
+
+💻 Light-themed, clean UI only.
+
+✅ Runs independently in VS Code.
+
+🧱 Tech Stack (to display in UI, extreme right):
+Tech Stack	Purpose / Security
+Node.js	Backend API
+React.js	Frontend UI
+MongoDB Atlas	Cloud DB
+BIP39	Wallet mnemonics
+AES-256	Encrypt wallet data
+SHA-256	Hash transactions
+CoinGecko API	Live price feed
+
+❌ What NOT To Include:
+No login/signup/authentication.
+
+No blockchain references unless you implement one.
+
+No dark theme or unnecessary colors.
+
+No local DB (e.g. Replit DB or localStorage).
+
+No hardcoded or fake coin data — must be live.
