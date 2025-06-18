@@ -10,7 +10,14 @@ interface CurrentHoldingsProps {
 }
 
 export default function CurrentHoldings({ wallet }: CurrentHoldingsProps) {
-  const { data: pricesData } = useQuery({
+  type PricesData = {
+    prices: Record<string, {
+      inr: number;
+      inr_24h_change: number;
+    }>;
+  };
+
+  const { data: pricesData } = useQuery<PricesData>({
     queryKey: ['/api/crypto/prices'],
     refetchInterval: 5000,
   });

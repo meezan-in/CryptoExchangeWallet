@@ -59,12 +59,13 @@ app.use((req, res, next) => {
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = 3535;
-  server.listen({
-    port,
-    host: "localhost",
-    //reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
+ const port = process.env.PORT || 3535; // Use environment variable or fallback to 3535 for local dev
+server.listen({
+  port,
+  host: "0.0.0.0", // Bind to all network interfaces, required for cloud deployment
+  // reusePort: true, // Only if you know you need it
+}, () => {
+  log(`serving on port ${port}`);
+});
+
 })();
