@@ -27,7 +27,7 @@ A **6th Semester CSE project** from RVCE simulating a secure cryptocurrency wall
 
 - **Frontend**: React.js, Tailwind CSS
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB Atlas (`mongodb+srv://happyuser:tomato12@cluster0.sx3hjrz.mongodb.net/`)
+- **Database**: MongoDB
 - **API**: CoinGecko (for live prices)
 - **Security**: BIP39, AES-256, SHA-256
 
