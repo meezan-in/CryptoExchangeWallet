@@ -8,7 +8,7 @@ A **6th Semester CSE project** from RVCE simulating a secure cryptocurrency wall
 
 - 🔐 Create & access multiple wallets using password and mnemonic (BIP39)
 - 💰 Add/Remove INR balance
-- 💱 Trade INR with real-time crypto rates (BTC, ETH, DOGE, MATIC, etc.)
+- 💱 Trade INR with real-time crypto rates (BTC, ETH, DOGE, MATIC, etc.).
 - 📈 Live price updates from CoinGecko (1-second refresh)
 - 📜 View full transaction history per wallet
 - 🎨 Light-themed, responsive, minimalist UI
