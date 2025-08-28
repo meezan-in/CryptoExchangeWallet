@@ -74,16 +74,14 @@ A **6th Semester CSE project** from RVCE simulating a secure cryptocurrency wall
 ---
 
 ## 🏗️ Project Architecture & Block Diagram
+flowchart TD
+    U[User (Browser)] -->|UI Actions| F[React Frontend]
+    F -->|REST API Calls| B[Express Backend]
+    B -->|Price Fetch| P[CoinGecko API]
+    B -->|CRUD Ops| D[MongoDB Atlas]
+    B -->|Encryption / Hashing| C[CryptoService<br/>(BIP39, PBKDF2, AES-256, SHA-256)]
+    C --> D
 
-```mermaid
-graph TD
-    A[User (Browser)] -->|HTTP/HTTPS| B[React Frontend (client/)]
-    B -->|API Calls| C[Express Backend (server/)]
-    C -->|Price Data| D[CoinGecko API]
-    C -->|CRUD| E[MongoDB Atlas]
-    C -->|Crypto Ops| F[CryptoService (BIP39, PBKDF2, AES-256, SHA-256)]
-    F --> E
-```
 
 ### Flow Description
 1. **User** interacts with the React frontend to create or access wallets, trade, and view balances.
@@ -132,4 +130,4 @@ graph TD
 - **Project**: Secure Crypto Wallet & Trading System  
 - **Student**: RVCE, 6th Sem CSE  
 - **Course**: Cryptography and Network Security  
-- **Purpose**: Academic & Educational Use Only
+- **Purpose**: Academic
